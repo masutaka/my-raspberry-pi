@@ -1,12 +1,14 @@
-auto lo
-
-iface lo inet loopback
-iface eth0 inet static
-address 192.168.0.4
-netmask 255.255.255.0
-gateway 192.168.0.1
-
 allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface default inet dhcp
+auto wlan0
+iface wlan0 inet static
+    wpa-ssid "<Wifi SSID>"
+    wpa-psk "<Wifi PASSWORD>"
+    wpa-key-mgmt WPA-PSK
+    wpa-pairwise TKIP CCMP
+    wpa-group TKIP CCMP
+    wpa-proto WPA RSN
+    wpa-ap-scan 1
+    wpa-scan-ssid 1
+    address 192.168.0.4
+    netmask 255.255.255.0
+    gateway 192.168.0.1
